@@ -1,426 +1,192 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>نموذج التفتيش</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نموذج التفتيش على المواقع</title>
+
   <style>
-    :root{
-      --bg1:#0b1220; --bg2:#0f1a33;
-      --card:#ffffff; --ink:#0b1220;
-      --line:#e6e8ee;
-      --accent:#2563eb; --accent2:#1d4ed8;
-      --ok:#16a34a; --warn:#b45309;
-
-      --noteText:#7c2d12;
-      --noteBg:#fffbeb;
-      --noteBorder:#f59e0b;
-
-      --shadow: rgbal: rgba(2,6,23,.18);
-      --shadow: rgba(2,6,23,.18);
-    }
-    *{box-sizing:border-box}
     body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial;
+      background:#0f172a;
       margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial;
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(37,99,235,.25), transparent 60%),
-        radial-gradient(900px 500px at 90% 0%, rgba(22,163,74,.18), transparent 55%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
-      min-height:100vh;
-      padding:18px;
+      padding:16px;
+      color:#fff;
     }
-    .wrap{max-width:1024px;margin:0 auto}
-    .hero{color:#fff;margin:6px 0 14px}
-    .hero h1{margin:0;font-size:24px;letter-spacing:.2px}
-
     .card{
-      background:var(--card);
-      border-radius:18px;
-      box-shadow:0 18px 45px var(--shadow);
-      overflow:hidden;
+      max-width:900px;
+      margin:auto;
+      background:#111827;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
     }
-    .topbar{
-      padding:14px 16px;
-      background:linear-gradient(90deg, rgba(37,99,235,.10), rgba(22,163,74,.08));
-      border-bottom:1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .gate{
-      font-size:13px;
-      font-weight:950;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:#fff;
-    }
-    .gate.bad{color:var(--warn);background:#fff7ed;border-color:#fed7aa}
-    .gate.good{color:var(--ok);background:#dcfce7;border-color:#bbf7d0}
+    h1{margin-top:0;text-align:center}
 
-    .content{padding:16px}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:520px){.grid{grid-template-columns:1fr}}
-    label{font-size:13px;font-weight:900;color:#111827}
-    input,select,textarea{
+    label{font-size:14px;color:#cbd5f5}
+    input, select, textarea{
+      width:100%;
+      padding:10px;
+      border-radius:10px;
+      border:none;
+      background:#1e293b;
+      color:#fff;
+      margin-top:4px;
+    }
+    input[readonly]{opacity:.85}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+
+    .gate{
+      margin-top:10px;
+      padding:8px;
+      border-radius:10px;
+      font-size:13px;
+      text-align:center;
+    }
+    .good{background:#064e3b;color:#a7f3d0}
+    .bad{background:#3f1d1d;color:#fecaca}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:16px;
+    }
+    th,td{
+      padding:8px;
+      border-bottom:1px solid #334155;
+      font-size:13px;
+    }
+    th{color:#93c5fd}
+
+    button{
+      margin-top:16px;
       width:100%;
       padding:12px;
-      margin-top:6px;
-      border:1px solid var(--line);
       border-radius:12px;
-      font-size:15px;
-      background:#fff;
-      outline:none;
-    }
-    input:focus,select:focus,textarea:focus{
-      border-color: rgba(37,99,235,.55);
-      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
-    }
-    .hint{margin-top:6px;font-size:12px;color:#64748b;line-height:1.5}
-
-    .actions{
-      padding:0 16px 16px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    button{
-      border:0;
-      border-radius:12px;
-      padding:12px 16px;
-      font-weight:950;
-      font-size:15px;
+      border:none;
+      font-size:16px;
+      background:#2563eb;
+      color:#fff;
       cursor:pointer;
-      touch-action:manipulation;
-    }
-    .btn-primary{background:var(--accent);color:#fff}
-    .btn-primary:hover{background:var(--accent2)}
-    .btn-primary:disabled{opacity:.5;cursor:not-allowed}
-    .btn-ghost{background:#eef2ff;color:#111827}
-
-    .tablewrap{
-      margin:0 16px 16px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      overflow:auto;
-    }
-    table{width:100%;border-collapse:collapse;min-width:940px}
-    th,td{border-bottom:1px solid var(--line);padding:12px 10px;font-size:14px;vertical-align:top}
-    th{background:#f8fafc;font-weight:950;text-align:center}
-
-    .check{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      font-weight:950;
-      background:#fff;
-    }
-
-    textarea.has-note{
-      background:var(--noteBg);
-      border-color:var(--noteBorder);
-      color:var(--noteText);
-      font-weight:750;
-    }
-    .note-flag{
-      margin-top:6px;
-      font-size:12px;
-      font-weight:950;
-      color:var(--noteBorder);
-      display:none;
-    }
-    textarea.auto-note{color:#555;font-style:italic;}
-
-    /* PDF */
-    .print-header{display:none}
-    .no-print{ /* used for print */ }
-    @media print{
-      body{background:#fff !important;padding:0 !important;}
-      .no-print{display:none !important;}
-      .card{box-shadow:none !important;border-radius:0 !important;}
-      .tablewrap{margin:0;border:1px solid #ddd;border-radius:0}
-      table{min-width:0}
-      th,td{font-size:12px}
-      input,select,textarea{border:0 !important; padding:0 !important; box-shadow:none !important; background:transparent !important;}
-      textarea.has-note{
-        background:#fff3cd !important;
-        border:1px solid #f59e0b !important;
-        padding:6px !important;
-      }
-      .print-header{
-        display:block !important;
-        padding:12px;
-        border-bottom:1px solid #ddd;
-      }
-      .print-title{margin:0 0 6px;font-size:16px;font-weight:950}
-      .print-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12px}
-      .kv{display:flex;gap:6px;align-items:baseline}
-      .k{color:#555;font-weight:900}
-      .v{color:#111}
     }
   </style>
 </head>
+
 <body>
-<div class="wrap">
-  <div class="hero no-print">
-    <h1>نموذج التفتيش على المواقع</h1>
+<div class="card">
+<h1>نموذج التفتيش على المواقع</h1>
+
+<div class="grid">
+  <div>
+    <label>الرقم الوظيفي</label>
+    <input id="empNo" placeholder="مثال: 88835">
   </div>
 
-  <div class="card">
-    <div class="topbar no-print">
-      <div class="gate bad" id="gate">⛔ يلزم تأكيد جميع المواقع قبل التصدير</div>
-      <div class="gate" id="empStatus">—</div>
-    </div>
+  <div>
+    <label>الاسم</label>
+    <input id="empName" readonly>
+  </div>
 
-    <!-- PDF header only -->
-    <div class="print-header">
-      <div class="print-title">نموذج التفتيش على المواقع</div>
-      <div class="print-grid" id="printGrid"></div>
-    </div>
+  <div>
+    <label>الوردية</label>
+    <input id="shift" readonly>
+  </div>
 
-    <div class="content no-print">
-      <div class="grid">
-        <div>
-          <label>الرقم الوظيفي</label>
-          <input id="empNo" inputmode="numeric" placeholder="اكتب الرقم الوظيفي" />
-          <button type="button" class="btn-ghost" id="fetchNameBtn" style="margin-top:8px;width:100%;">🔍 جلب الاسم</button>
-          <div class="hint">تلميح: اكتب الرقم ثم اضغط (جلب الاسم).</div>
-        </div>
+  <div>
+    <label>التاريخ</label>
+    <input id="date" readonly>
+  </div>
 
-        <div>
-          <label>الاسم</label>
-          <input id="guardName" placeholder="سيتم تعبئته عند جلب الاسم" />
-          <div class="hint">يمكنك التعديل يدويًا إذا لزم.</div>
-        </div>
-
-        <div>
-          <label>الوردية</label>
-          <select id="shift">
-            <option value="">اختر</option><option>أ</option><option>ب</option><option>ج</option><option>د</option>
-          </select>
-        </div>
-
-        <div>
-          <label>التاريخ</label>
-          <input id="date" type="date" />
-        </div>
-      </div>
-    </div>
-
-    <div class="actions no-print">
-      <button class="btn-primary" id="pdfBtn" disabled>تصدير PDF</button>
-      <button class="btn-ghost" id="clearBtn" type="button">مسح</button>
-    </div>
-
-    <div class="tablewrap">
-      <table>
-        <thead>
-          <tr>
-            <th>الموقع</th>
-            <th>الأنظمة</th>
-            <th>تم</th>
-            <th>ملاحظات</th>
-          </tr>
-        </thead>
-        <tbody id="rows"></tbody>
-      </table>
-    </div>
+  <div>
+    <label>الوقت</label>
+    <input id="time" readonly>
   </div>
 </div>
 
+<div id="empStatus" class="gate bad">أدخل الرقم الوظيفي</div>
+
+<table>
+<thead>
+<tr>
+  <th>الموقع</th>
+  <th>تم</th>
+  <th>ملاحظات</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>مبنى A</td>
+  <td><input type="checkbox"></td>
+  <td><input></td>
+</tr>
+<tr>
+  <td>مبنى B</td>
+  <td><input type="checkbox"></td>
+  <td><input></td>
+</tr>
+<tr>
+  <td>مبنى C</td>
+  <td><input type="checkbox"></td>
+  <td><input></td>
+</tr>
+</tbody>
+</table>
+
+<button onclick="exportPDF()">تصدير PDF</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-  // ==== قاعدة بيانات الموظفين (مدمجة) ====
-  const empDB = {
-    "88835": { name: "فهد الشمري", shift: "ب" },
-    "88840": { name: "محمد حمد", shift: "أ" }
-  };
+const empDB = {
+  "88835": {name:"فهد الشمري", shift:"ب"},
+  "88840": {name:"محمد حمد", shift:"أ"}
+};
 
-  // ==== بيانات المواقع ====
-  const sites = [
-    { site:"مبنى A الدور الخامس والأرضي والمواقف – LG – B", systems:"الأبواب + اكسس الأبواب" },
-    { site:"مبنى B الدور الخامس والأرضي والمواقف – LG – B", systems:"الأبواب + اكسس الأبواب" },
-    { site:"مبنى C الدور الأرضي والمواقف – LG – B", systems:"الأبواب + اكسس الأبواب" },
-    { site:"مبنى الخدمات مقابل برج B", systems:"الأبواب والتخزين" },
-    { site:"مبنى الخدمات امام مبنى D", systems:"الأبواب + اكسس الأبواب" },
-    { site:"الأعمدة الخارجية + المصدات البلاستيكية للمواقف الخارجية.", systems:"إغلاق أعمدة الدخول والمصدات البلاستيكية" }
-  ];
+const empNo = document.getElementById("empNo");
+const empName = document.getElementById("empName");
+const shift = document.getElementById("shift");
+const status = document.getElementById("empStatus");
 
-  const rowsEl = document.getElementById("rows");
-  const pdfBtn = document.getElementById("pdfBtn");
-  const gate = document.getElementById("gate");
-  const empStatus = document.getElementById("empStatus");
+function normalize(v){
+  const map={"٠":"0","١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9"};
+  return String(v||"").replace(/[٠-٩]/g,d=>map[d]).replace(/\D/g,"");
+}
 
-  const empNoEl = document.getElementById("empNo");
-  const nameEl  = document.getElementById("guardName");
-
-  function normalizeEmpNo(s){
-    const map = {"٠":"0","١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9"};
-    let t = String(s||"").trim().replace(/[٠-٩]/g, d => map[d] || d);
-    t = t.replace(/[^0-9]/g, "");
-    return t;
+function lookup(){
+  const no = normalize(empNo.value);
+  empNo.value=no;
+  if(empDB[no]){
+    empName.value=empDB[no].name;
+    shift.value=empDB[no].shift;
+    status.textContent="تم التعرف على الموظف";
+    status.className="gate good";
+  }else{
+    empName.value="";
+    shift.value="";
+    status.textContent="رقم غير موجود";
+    status.className="gate bad";
   }
+}
 
-  function updateEmpStatus(){
-    const no = normalizeEmpNo(empNoEl.value);
-    if(!no){
-      empStatus.textContent = "—";
-      empStatus.className = "gate";
-      return;
-    }
-    if(empDB[no]){
-      empStatus.textContent = "✅ تم التعرف على الموظف";
-      empStatus.className = "gate good";
-    }else{
-      empStatus.textContent = "ℹ️ رقم غير موجود";
-      empStatus.className = "gate bad";
-    }
-  }
+empNo.addEventListener("blur",lookup);
+empNo.addEventListener("keyup",e=>{if(e.key==="Enter")lookup();});
 
-  function fetchName(){
-    const no = normalizeEmpNo(empNoEl.value);
-    empNoEl.value = no;
-    if(empDB[no]){
-      nameEl.value = empDB[no].name;
-      document.getElementById("shift").value = empDB[no].shift;
-      updateEmpStatus();
-      return true;
-    }
-    updateEmpStatus();
-    alert("الرقم غير موجود في القائمة");
-    return false;
-  }
+function setDateTime(){
+  const n=new Date();
+  date.value=n.toISOString().slice(0,10);
+  time.value=n.toTimeString().slice(0,5);
+}
+setDateTime();
+setInterval(setDateTime,30000);
 
-  function renderSites(){
-    rowsEl.innerHTML="";
-    sites.forEach((r,i)=>{
-      const tr=document.createElement("tr");
-      tr.innerHTML = `
-        <td>${escapeHtml(r.site)}</td>
-        <td>${escapeHtml(r.systems)}</td>
-        <td style="text-align:center">
-          <label class="check"><input type="checkbox" id="chk_${i}"> تم</label>
-        </td>
-        <td>
-          <textarea id="note_${i}" placeholder="لا يوجد ملاحظات"></textarea>
-          <div class="note-flag" id="flag_${i}">⚠ يوجد ملاحظة</div>
-        </td>
-      `;
-      rowsEl.appendChild(tr);
-
-      document.getElementById("chk_"+i).addEventListener("change", refreshGate);
-      document.getElementById("note_"+i).addEventListener("input", ()=>noteCheck(i));
-    });
-  }
-
-  function noteCheck(i){
-    const n=document.getElementById("note_"+i);
-    const f=document.getElementById("flag_"+i);
-    if(n.value.trim()){
-      n.classList.add("has-note");
-      n.classList.remove("auto-note");
-      f.style.display="block";
-    }else{
-      n.classList.remove("has-note","auto-note");
-      f.style.display="none";
-    }
-  }
-
-  function allChecked(){
-    return sites.every((_,i)=>document.getElementById("chk_"+i).checked);
-  }
-
-  function refreshGate(){
-    const ok = allChecked();
-    pdfBtn.disabled = !ok;
-    if(ok){
-      gate.textContent="✅ تم تأكيد جميع المواقع — جاهز للتصدير";
-      gate.className="gate good";
-    }else{
-      gate.textContent="⛔ يلزم تأكيد جميع المواقع قبل التصدير";
-      gate.className="gate bad";
-    }
-  }
-
-  function buildPrintHeader(){
-    const guardName = nameEl.value || "—";
-    const empNo = empNoEl.value || "—";
-    const shift = document.getElementById("shift").value || "—";
-    const date  = document.getElementById("date").value || "—";
-
-    document.getElementById("printGrid").innerHTML = `
-      <div class="kv"><span class="k">الاسم:</span><span class="v">${escapeHtml(guardName)}</span></div>
-      <div class="kv"><span class="k">الرقم الوظيفي:</span><span class="v">${escapeHtml(empNo)}</span></div>
-      <div class="kv"><span class="k">الوردية:</span><span class="v">${escapeHtml(shift)}</span></div>
-      <div class="kv"><span class="k">التاريخ:</span><span class="v">${escapeHtml(date)}</span></div>
-    `;
-  }
-
-  function exportPDF(){
-    if(!allChecked()) return;
-
-    // املأ الملاحظات الفارغة قبل الطباعة
-    sites.forEach((_,i)=>{
-      const n=document.getElementById("note_"+i);
-      if(!n.value.trim()){
-        n.value="لا يوجد ملاحظات";
-        n.classList.add("auto-note");
-      }
-    });
-
-    buildPrintHeader();
-    window.print();
-  }
-
-  function clearAll(){
-    empNoEl.value="";
-    nameEl.value="";
-    document.getElementById("shift").value="";
-    document.getElementById("date").value="";
-    sites.forEach((_,i)=>{
-      const chk=document.getElementById("chk_"+i);
-      const note=document.getElementById("note_"+i);
-      const flag=document.getElementById("flag_"+i);
-      if(chk) chk.checked=false;
-      if(note){ note.value=""; note.classList.remove("has-note","auto-note"); }
-      if(flag) flag.style.display="none";
-    });
-    refreshGate();
-    updateEmpStatus();
-  }
-
-  function escapeHtml(s){
-    return String(s)
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
-  }
-
-  // events
-  document.getElementById("fetchNameBtn").addEventListener("click", fetchName);
-  empNoEl.addEventListener("input", updateEmpStatus);
-  empNoEl.addEventListener("change", updateEmpStatus);
-
-  document.getElementById("pdfBtn").addEventListener("click", exportPDF);
-  document.getElementById("clearBtn").addEventListener("click", clearAll);
-
-  // init
-  renderSites();
-  refreshGate();
-  updateEmpStatus();
+function exportPDF(){
+  html2pdf().from(document.body).save("inspection.pdf");
+}
 </script>
 </body>
 </html>
