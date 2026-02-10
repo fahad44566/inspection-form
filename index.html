@@ -169,7 +169,120 @@
       .k{color:#555;font-weight:900}
       .v{color:#111}
     }
-  </style>
+  
+/* ====== PDF Typography & Layout Enhancement ====== */
+@media print {
+  @page { size: A4; margin: 12mm; }
+
+  html, body{
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-family: "Tahoma","Arial",sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* توازن النص العربي */
+  *{
+    direction: rtl !important;
+    unicode-bidi: plaintext !important;
+  }
+
+  h1,h2,h3{
+    line-height:1.2 !important;
+    margin:0 0 8px 0 !important;
+  }
+
+  /* جدول PDF مضبوط */
+  table{
+    width:100% !important;
+    table-layout: fixed !important;
+  }
+  th, td{
+    padding:8px 10px !important;
+    vertical-align: middle !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* محاذاة الأعمدة */
+  th, td{ text-align: right !important; }
+
+  /* حقول الإدخال تظهر كنص مرتب */
+  input, textarea, select{
+    font-size:12px !important;
+    line-height:1.4 !important;
+    padding:6px 8px !important;
+  }
+
+  /* صناديق الملاحظات إن وجدت */
+  .badge-note, .note-box, .note, .alert-note{
+    font-size:11px !important;
+    line-height:1.35 !important;
+  }
+
+  /* خفف أي تأثيرات شفافية */
+  [style*="opacity"]{ opacity: 1 !important; }
+}
+
+
+/* ====== PDF Checkbox Normalization ====== */
+@media print {
+  input[type="checkbox"]{
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 14px !important;
+    height: 14px !important;
+    border: 1.5px solid #000 !important;
+    border-radius: 3px !important;
+    position: relative !important;
+  }
+  input[type="checkbox"]:checked::after{
+    content: "✔" !important;
+    position: absolute !important;
+    top: -2px !important;
+    left: 1px !important;
+    font-size: 14px !important;
+    color: #000 !important;
+    font-weight: bold !important;
+  }
+}
+
+
+/* ====== PDF Notes (full text + orange highlight) ====== */
+.note-print{ display:none; }
+@media print{
+  /* اخفاء أي تنبيه نصي مثل "يوجد ملاحظة" إن وجد */
+  .note-flag, .note-warning, .warn-note, .note-hint{ display:none !important; }
+
+  /* اخفاء خانة الإدخال واظهار النص الكامل */
+  textarea[id^="note_"], input[id^="note_"]{ display:none !important; }
+
+  .note-print{
+    display:block !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    line-height: 1.55 !important;
+    color:#000 !important;
+    background:#fff !important;
+    border: 1.5px solid #000 !important;
+    border-radius: 8px !important;
+    padding: 7px 10px !important;
+    min-height: 22px !important;
+  }
+
+  /* إذا يوجد ملاحظة: تمييز برتقالي */
+  .note-print.has-note{
+    border-color:#f97316 !important;
+    background:#fff7ed !important;
+  }
+
+  /* خلي خلية الصف تتمدد طبيعي */
+  td{ height:auto !important; }
+}
+
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -455,6 +568,39 @@ document.getElementById("pdfBtn").addEventListener("click", exportPDF);
   setNowDateTime();
   updateEmpStatus();
   setInterval(setNowDateTime, 30000);
+
+  // ===== PDF Notes: show full note text in print as expandable box =====
+  function syncNotesForPrint(){
+    const noteInputs = Array.from(document.querySelectorAll('textarea[id^="note_"], input[id^="note_"]'));
+    noteInputs.forEach(inp=>{
+      let box = inp.parentElement.querySelector('.note-print');
+      if(!box){
+        box = document.createElement('div');
+        box.className = 'note-print';
+        inp.parentElement.appendChild(box);
+      }
+      const val = (inp.value || '').trim();
+      if(val && val !== "لا يوجد ملاحظات"){
+        box.textContent = val;
+        box.classList.add("has-note");
+      }else{
+        box.textContent = "لا يوجد ملاحظات";
+        box.classList.remove("has-note");
+      }
+    });
+  }
+
+  window.addEventListener("beforeprint", syncNotesForPrint);
+
+  // ضمان التحديث عند الضغط على زر التصدير
+  if(typeof exportPDF === "function"){
+    const _exportPDF = exportPDF;
+    exportPDF = function(){
+      syncNotesForPrint();
+      return _exportPDF();
+    }
+  }
+
 </script>
 </body>
 </html>
