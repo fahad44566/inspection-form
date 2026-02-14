@@ -1,11 +1,5 @@
-from pathlib import Path
+<!doctype html>
 
-fixed_html = Path("/mnt/data/نموذج_التشييك_اليومي_على_المواقع.html").read_text(encoding="utf-8")
-
-# If the file is truncated or contains placeholder text, replace with the fully corrected version.
-needs_replace = ("(rest of your HTML/JS continues" in fixed_html) or ("/* ... rest unchanged ... */" in fixed_html)
-
-full_corrected = """<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
@@ -26,562 +20,580 @@ full_corrected = """<!doctype html>
       --text: #1e293b;
       --text2: #475569;
 
-      --gold: #b8860b;
-      --gold2: #d4a017;
-      --gold-light: #fef9e7;
-      --gold-border: #f0d060;
+```
+  --gold: #b8860b;
+  --gold2: #d4a017;
+  --gold-light: #fef9e7;
+  --gold-border: #f0d060;
 
-      --blue: #1a56db;
-      --blue2: #1e40af;
-      --blue-light: #eff6ff;
-      --blue-border: #93c5fd;
+  --blue: #1a56db;
+  --blue2: #1e40af;
+  --blue-light: #eff6ff;
+  --blue-border: #93c5fd;
 
-      --green: #047857;
-      --green-light: #ecfdf5;
-      --green-border: #6ee7b7;
+  --green: #047857;
+  --green-light: #ecfdf5;
+  --green-border: #6ee7b7;
 
-      --amber: #92400e;
-      --amber-light: #fffbeb;
-      --amber-border: #fcd34d;
+  --amber: #92400e;
+  --amber-light: #fffbeb;
+  --amber-border: #fcd34d;
 
-      --red: #dc2626;
-      --red-light: #fef2f2;
-      --red-border: #fca5a5;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --red-border: #fca5a5;
 
-      --purple: #7c3aed;
-      --purple-light: #f5f3ff;
-      --purple-border: #c4b5fd;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --purple-border: #c4b5fd;
 
-      --r: 16px;
-      --r2: 12px;
-      --r3: 8px;
-    }
+  --r: 16px;
+  --r2: 12px;
+  --r3: 8px;
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Cairo', 'Cairo Play', 'Noto Kufi Arabic', Tahoma, Arial, sans-serif;
-      background: #0d1117;
-      background-image:
-        radial-gradient(ellipse 900px 600px at 80% -10%, rgba(30,64,175,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 700px 500px at -10% 90%, rgba(4,120,87,0.10) 0%, transparent 55%);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 20px 16px 40px;
-    }
+body {
+  font-family: 'Cairo', 'Cairo Play', 'Noto Kufi Arabic', Tahoma, Arial, sans-serif;
+  background: #0d1117;
+  background-image:
+    radial-gradient(ellipse 900px 600px at 80% -10%, rgba(30,64,175,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 500px at -10% 90%, rgba(4,120,87,0.10) 0%, transparent 55%);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 20px 16px 40px;
+}
 
-    .page-header {
-      max-width: 1120px;
-      margin: 0 auto 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .logo-badge {
-      width: 52px; height: 52px;
-      background: linear-gradient(135deg, #1a56db 0%, #1e40af 100%);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-      box-shadow: 0 8px 24px rgba(26,86,219,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
-      flex-shrink: 0;
-    }
-    .page-title-wrap h1 {
-      font-size: 22px; font-weight: 900;
-      color: #ffffff;
-      letter-spacing: -0.3px;
-    }
-    .page-title-wrap p {
-      font-size: 13px; color: #64748b; font-weight: 600; margin-top: 2px;
-    }
+/* ─── HEADER ─────────────────────────────── */
+.page-header {
+  max-width: 1120px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.logo-badge {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, #1a56db 0%, #1e40af 100%);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 8px 24px rgba(26,86,219,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+.page-title-wrap h1 {
+  font-size: 22px; font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+.page-title-wrap p {
+  font-size: 13px; color: #64748b; font-weight: 600; margin-top: 2px;
+}
 
-    .card {
-      max-width: 1120px;
-      margin: 0 auto;
-      background: var(--surface);
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.06) inset,
-        0 32px 64px -16px rgba(0,0,0,0.55),
-        0 0 0 1px rgba(255,255,255,0.04);
-    }
+/* ─── CARD ────────────────────────────────── */
+.card {
+  max-width: 1120px;
+  margin: 0 auto;
+  background: var(--surface);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 32px 64px -16px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(255,255,255,0.04);
+}
 
-    .statusbar {
-      display: flex; flex-wrap: wrap; align-items: center;
-      justify-content: space-between; gap: 10px;
-      padding: 14px 20px;
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-    }
-    .pill {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 8px 14px; border-radius: 999px;
-      font-weight: 800; font-size: 13px;
-      border: 1.5px solid var(--border2);
-      background: var(--surface);
-      transition: all .2s;
-    }
-    .pill.good  { background: var(--green-light); color: var(--green); border-color: var(--green-border); }
-    .pill.warn  { background: var(--amber-light); color: var(--amber); border-color: var(--amber-border); }
-    .pill.info  { background: var(--blue-light); color: var(--blue); border-color: var(--blue-border); }
-    .pill.neutral { background: var(--surface3); color: var(--text2); border-color: var(--border); }
+/* ─── STATUS BAR ─────────────────────────── */
+.statusbar {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 10px;
+  padding: 14px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+.pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px; border-radius: 999px;
+  font-weight: 800; font-size: 13px;
+  border: 1.5px solid var(--border2);
+  background: var(--surface);
+  transition: all .2s;
+}
+.pill.good  { background: var(--green-light); color: var(--green); border-color: var(--green-border); }
+.pill.warn  { background: var(--amber-light); color: var(--amber); border-color: var(--amber-border); }
+.pill.info  { background: var(--blue-light); color: var(--blue); border-color: var(--blue-border); }
+.pill.neutral { background: var(--surface3); color: var(--text2); border-color: var(--border); }
 
-    .fields-section {
-      padding: 20px 20px 14px;
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(to bottom, #fafbff, #ffffff);
-    }
-    .fields-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-    @media(max-width:900px){ .fields-grid { grid-template-columns: repeat(3,1fr); } }
-    @media(max-width:600px){ .fields-grid { grid-template-columns: 1fr 1fr; } }
+/* ─── FIELDS ─────────────────────────────── */
+.fields-section {
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(to bottom, #fafbff, #ffffff);
+}
+.fields-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+@media(max-width:900px){ .fields-grid { grid-template-columns: repeat(3,1fr); } }
+@media(max-width:600px){ .fields-grid { grid-template-columns: 1fr 1fr; } }
 
-    .field-group label {
-      display: block;
-      font-size: 12px; font-weight: 900;
-      color: var(--text2); margin-bottom: 7px;
-      letter-spacing: 0.4px; text-transform: uppercase;
-    }
-    input, select, textarea {
-      width: 100%;
-      border: 1.5px solid var(--border);
-      border-radius: var(--r2);
-      padding: 10px 12px;
-      font-size: 15px;
-      font-family: inherit;
-      font-weight: 600;
-      color: var(--text);
-      outline: none;
-      background: var(--surface);
-      transition: border-color .15s, box-shadow .15s;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(26,86,219,0.12);
-    }
-    input[readonly] { background: var(--surface3); color: var(--text2); cursor: default; }
-    .field-hint { font-size: 11px; color: var(--muted); margin-top: 5px; font-weight: 600; }
+.field-group label {
+  display: block;
+  font-size: 12px; font-weight: 900;
+  color: var(--text2); margin-bottom: 7px;
+  letter-spacing: 0.4px; text-transform: uppercase;
+}
+input, select, textarea {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r2);
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--text);
+  outline: none;
+  background: var(--surface);
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(26,86,219,0.12);
+}
+input[readonly] { background: var(--surface3); color: var(--text2); cursor: default; }
+.field-hint { font-size: 11px; color: var(--muted); margin-top: 5px; font-weight: 600; }
 
-    .table-section { padding: 16px 20px 20px; }
-    .table-title {
-      font-size: 13px; font-weight: 900; color: var(--text2);
-      text-transform: uppercase; letter-spacing: 0.5px;
-      margin-bottom: 12px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .table-title::after {
-      content: ''; flex: 1; height: 1px;
-      background: linear-gradient(to left, transparent, var(--border));
-    }
+/* ─── TABLE SECTION ──────────────────────── */
+.table-section { padding: 16px 20px 20px; }
+.table-title {
+  font-size: 13px; font-weight: 900; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.table-title::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to left, transparent, var(--border));
+}
 
-    .table-wrap {
-      border: 1.5px solid var(--border);
-      border-radius: var(--r);
-      overflow: auto;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    table {
-      width: 100%; min-width: 860px;
-      border-collapse: separate; border-spacing: 0;
-    }
-    thead th {
-      position: sticky; top: 0; z-index: 2;
-      background: var(--ink);
-      color: #e2e8f0;
-      padding: 13px 14px;
-      font-size: 12px; font-weight: 900;
-      text-align: center;
-      letter-spacing: 0.4px;
-      border-bottom: 2px solid var(--ink2);
-    }
-    thead th:first-child { text-align: right; border-radius: 0 var(--r2) 0 0; }
-    thead th:last-child  { border-radius: 0 0 0 var(--r2); }
+.table-wrap {
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  overflow: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+table {
+  width: 100%; min-width: 860px;
+  border-collapse: separate; border-spacing: 0;
+}
+thead th {
+  position: sticky; top: 0; z-index: 2;
+  background: var(--ink);
+  color: #e2e8f0;
+  padding: 13px 14px;
+  font-size: 12px; font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.4px;
+  border-bottom: 2px solid var(--ink2);
+}
+thead th:first-child { text-align: right; border-radius: 0 var(--r2) 0 0; }
+thead th:last-child  { border-radius: 0 0 0 var(--r2); }
 
-    tbody tr { transition: background .12s; }
-    tbody tr:hover { background: #fafbff; }
-    tbody td {
-      padding: 13px 14px;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px; font-weight: 600;
-      vertical-align: top;
-    }
-    tbody tr:last-child td { border-bottom: none; }
-    td.col-site  { width: 28%; }
-    td.col-sys   { width: 16%; text-align: center; color: var(--text2); }
-    td.col-done  { width: 16%; text-align: center; }
-    td.col-note  { width: 28%; }
-    td.col-photo { width: 12%; text-align: center; }
+tbody tr { transition: background .12s; }
+tbody tr:hover { background: #fafbff; }
+tbody td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px; font-weight: 600;
+  vertical-align: top;
+}
+tbody tr:last-child td { border-bottom: none; }
+td.col-site  { width: 28%; }
+td.col-sys   { width: 16%; text-align: center; color: var(--text2); }
+td.col-done  { width: 16%; text-align: center; }
+td.col-note  { width: 28%; }
+td.col-photo { width: 12%; text-align: center; }
 
-    tr.sep-row td { padding: 6px 14px; background: var(--surface2); }
-    .sep-line { height: 1px; background: linear-gradient(to left, transparent, var(--border2), transparent); }
+/* separator row */
+tr.sep-row td { padding: 6px 14px; background: var(--surface2); }
+.sep-line { height: 1px; background: linear-gradient(to left, transparent, var(--border2), transparent); }
 
-    tr.row-noted { background: var(--amber-light); }
-    tr.row-noted:hover { background: #fef3c7; }
+/* row highlight when has note */
+tr.row-noted { background: var(--amber-light); }
+tr.row-noted:hover { background: #fef3c7; }
 
-    .check-lbl {
-      display: inline-flex; align-items: center; gap: 8px;
-      cursor: pointer; font-weight: 800; font-size: 14px;
-      padding: 6px 12px; border-radius: 999px;
-      border: 1.5px solid var(--border); background: var(--surface);
-      transition: all .15s;
-      user-select: none;
-    }
-    .check-lbl:hover { border-color: var(--blue); background: var(--blue-light); }
-    .check-lbl input[type="checkbox"] {
-      width: 16px; height: 16px; border: none; border-radius: 4px;
-      accent-color: var(--blue); cursor: pointer;
-      padding: 0;
-    }
-    .check-lbl.is-checked {
-      background: var(--green-light); color: var(--green);
-      border-color: var(--green-border);
-    }
+/* check & radio */
+.check-lbl {
+  display: inline-flex; align-items: center; gap: 8px;
+  cursor: pointer; font-weight: 800; font-size: 14px;
+  padding: 6px 12px; border-radius: 999px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  transition: all .15s;
+  user-select: none;
+}
+.check-lbl:hover { border-color: var(--blue); background: var(--blue-light); }
+.check-lbl input[type="checkbox"] {
+  width: 16px; height: 16px; border: none; border-radius: 4px;
+  accent-color: var(--blue); cursor: pointer;
+  padding: 0;
+}
+.check-lbl.is-checked {
+  background: var(--green-light); color: var(--green);
+  border-color: var(--green-border);
+}
 
-    .radio-group { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-    .radio-lbl {
-      display: inline-flex; align-items: center; gap: 7px;
-      cursor: pointer; font-weight: 800; font-size: 13px;
-      padding: 6px 12px; border-radius: 999px;
-      border: 1.5px solid var(--border); background: var(--surface);
-      transition: all .15s;
-      user-select: none;
-    }
-    .radio-lbl:hover { border-color: var(--blue); background: var(--blue-light); }
-    .radio-lbl.sel-yes { background: var(--red-light); color: var(--red); border-color: var(--red-border); }
-    .radio-lbl.sel-no  { background: var(--green-light); color: var(--green); border-color: var(--green-border); }
-    .radio-lbl input[type="radio"] { width: 14px; height: 14px; accent-color: var(--blue); padding: 0; border: none; }
+.radio-group { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.radio-lbl {
+  display: inline-flex; align-items: center; gap: 7px;
+  cursor: pointer; font-weight: 800; font-size: 13px;
+  padding: 6px 12px; border-radius: 999px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  transition: all .15s;
+  user-select: none;
+}
+.radio-lbl:hover { border-color: var(--blue); background: var(--blue-light); }
+.radio-lbl.sel-yes { background: var(--red-light); color: var(--red); border-color: var(--red-border); }
+.radio-lbl.sel-no  { background: var(--green-light); color: var(--green); border-color: var(--green-border); }
+.radio-lbl input[type="radio"] { width: 14px; height: 14px; accent-color: var(--blue); padding: 0; border: none; }
 
-    textarea { min-height: 60px; resize: vertical; font-size: 14px; }
-    textarea.has-note { background: var(--amber-light); border-color: var(--amber-border); color: #7c2d12; font-weight: 800; }
-    textarea.missing { border-color: var(--red); background: var(--red-light); }
-    .note-hint { font-size: 11px; font-weight: 900; color: var(--amber); margin-top: 5px; }
+textarea { min-height: 60px; resize: vertical; font-size: 14px; }
+textarea.has-note { background: var(--amber-light); border-color: var(--amber-border); color: #7c2d12; font-weight: 800; }
+textarea.missing { border-color: var(--red); background: var(--red-light); }
+.note-hint { font-size: 11px; font-weight: 900; color: var(--amber); margin-top: 5px; }
 
-    .photo-btn {
-      position: relative;
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 12px; border-radius: var(--r2);
-      font-size: 12px; font-weight: 800;
-      border: 1.5px solid var(--border);
-      background: var(--surface);
-      cursor: pointer;
-      transition: all .15s;
-    }
-    .photo-btn:hover { border-color: var(--blue); background: var(--blue-light); }
-    .photo-btn.has-photo {
-      background: var(--purple-light); color: var(--purple);
-      border-color: var(--purple-border);
-    }
-    .photo-btn input[type="file"] {
-      position: absolute; width: 100%; height: 100%;
-      opacity: 0; cursor: pointer; inset: 0; padding: 0; border: none;
-    }
-    .photo-preview {
-      display: none;
-      margin-top: 8px;
-      border-radius: var(--r2);
-      overflow: hidden;
-      border: 1.5px solid var(--border);
-      position: relative;
-    }
-    .photo-preview.show { display: block; }
-    .photo-preview img {
-      width: 100%; height: auto;
-      display: block;
-    }
-    .photo-remove {
-      position: absolute;
-      top: 6px; left: 6px;
-      background: var(--red);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 11px; font-weight: 900;
-      cursor: pointer;
-      transition: all .15s;
-    }
-    .photo-remove:hover {
-      background: #b91c1c;
-      transform: scale(1.05);
-    }
+/* ─── PHOTO UPLOAD ───────────────────────── */
+.photo-btn {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: var(--r2);
+  font-size: 12px; font-weight: 800;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  transition: all .15s;
+}
+.photo-btn:hover { border-color: var(--blue); background: var(--blue-light); }
+.photo-btn.has-photo {
+  background: var(--purple-light); color: var(--purple);
+  border-color: var(--purple-border);
+}
+.photo-btn input[type="file"] {
+  position: absolute; width: 100%; height: 100%;
+  opacity: 0; cursor: pointer; inset: 0; padding: 0; border: none;
+}
+.photo-preview {
+  display: none;
+  margin-top: 8px;
+  border-radius: var(--r2);
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  position: relative;
+}
+.photo-preview.show { display: block; }
+.photo-preview img {
+  width: 100%; height: auto;
+  display: block;
+}
+.photo-remove {
+  position: absolute;
+  top: 6px; left: 6px;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px; font-weight: 900;
+  cursor: pointer;
+  transition: all .15s;
+}
+.photo-remove:hover {
+  background: #b91c1c;
+  transform: scale(1.05);
+}
 
-    .signature-section {
-      padding: 16px 20px 20px;
-      border-top: 1px solid var(--border);
-      background: var(--surface2);
-    }
-    .signature-title {
-      font-size: 13px; font-weight: 900; color: var(--text2);
-      text-transform: uppercase; letter-spacing: 0.5px;
-      margin-bottom: 12px;
-    }
-    .signature-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media(max-width:700px){ .signature-wrapper { grid-template-columns: 1fr; } }
+/* ─── SIGNATURE SECTION ──────────────────── */
+.signature-section {
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--surface2);
+}
+.signature-title {
+  font-size: 13px; font-weight: 900; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.signature-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media(max-width:700px){ .signature-wrapper { grid-template-columns: 1fr; } }
 
-    .signature-box {
-      border: 1.5px solid var(--border);
-      border-radius: var(--r);
-      background: var(--surface);
-      overflow: hidden;
-    }
-    .signature-header {
-      padding: 10px 14px;
-      background: var(--surface3);
-      border-bottom: 1.5px solid var(--border);
-      font-size: 13px; font-weight: 800;
-      color: var(--text2);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .signature-canvas-wrap {
-      position: relative;
-      background: white;
-      height: 160px;
-    }
-    canvas.signature-canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-      cursor: crosshair;
-      touch-action: none;
-    }
-    .signature-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
-      pointer-events: none;
-    }
-    .signature-placeholder.hidden { display: none; }
-    .sig-clear-btn {
-      background: transparent;
-      border: none;
-      color: var(--red);
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 6px;
-      transition: all .15s;
-    }
-    .sig-clear-btn:hover {
-      background: var(--red-light);
-    }
+.signature-box {
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+  overflow: hidden;
+}
+.signature-header {
+  padding: 10px 14px;
+  background: var(--surface3);
+  border-bottom: 1.5px solid var(--border);
+  font-size: 13px; font-weight: 800;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.signature-canvas-wrap {
+  position: relative;
+  background: white;
+  height: 160px;
+}
+canvas.signature-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+.signature-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.signature-placeholder.hidden { display: none; }
+.sig-clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all .15s;
+}
+.sig-clear-btn:hover {
+  background: var(--red-light);
+}
 
-    .actions {
-      padding: 14px 20px 20px;
-      display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
-      background: var(--surface2);
-      border-top: 1px solid var(--border);
-    }
-    .actions-left, .actions-right {
-      display: flex; gap: 10px; flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 11px 22px; border: none; border-radius: var(--r2);
-      font-family: inherit; font-size: 15px; font-weight: 900;
-      cursor: pointer; transition: all .15s;
-    }
-    .btn:disabled { opacity: .4; cursor: not-allowed; }
-    .btn-ghost { background: var(--surface3); color: var(--text2); border: 1.5px solid var(--border); }
-    .btn-ghost:hover:not(:disabled) { background: var(--border); color: var(--text); }
-    .btn-primary {
-      background: linear-gradient(135deg, #1a56db 0%, #1e40af 100%);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(26,86,219,0.35);
-    }
-    .btn-primary:hover:not(:disabled) {
-      background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
-      box-shadow: 0 6px 20px rgba(26,86,219,0.45);
-      transform: translateY(-1px);
-    }
+/* ─── ACTIONS ────────────────────────────── */
+.actions {
+  padding: 14px 20px 20px;
+  display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+}
+.actions-left, .actions-right {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 11px 22px; border: none; border-radius: var(--r2);
+  font-family: inherit; font-size: 15px; font-weight: 900;
+  cursor: pointer; transition: all .15s;
+}
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn-ghost { background: var(--surface3); color: var(--text2); border: 1.5px solid var(--border); }
+.btn-ghost:hover:not(:disabled) { background: var(--border); color: var(--text); }
+.btn-primary {
+  background: linear-gradient(135deg, #1a56db 0%, #1e40af 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(26,86,219,0.35);
+}
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  box-shadow: 0 6px 20px rgba(26,86,219,0.45);
+  transform: translateY(-1px);
+}
 
-    .progress-wrap { height: 4px; background: var(--border); border-radius: 999px; overflow: hidden; margin: 6px 0; }
-    .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(to left, #1a56db, #047857); transition: width .4s cubic-bezier(.4,0,.2,1); }
+/* ─── PROGRESS BAR ───────────────────────── */
+.progress-wrap { height: 4px; background: var(--border); border-radius: 999px; overflow: hidden; margin: 6px 0; }
+.progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(to left, #1a56db, #047857); transition: width .4s cubic-bezier(.4,0,.2,1); }
 
-    .toast {
-      position: fixed; bottom: 20px; inset-inline: 16px;
-      display: flex; justify-content: center;
-      pointer-events: none; z-index: 9999;
-    }
-    .toast-inner {
-      pointer-events: auto;
-      max-width: 500px; width: 100%;
-      background: var(--ink); color: #e2e8f0;
-      border-radius: 14px;
-      padding: 13px 18px;
-      font-weight: 800; font-size: 14px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-      display: none;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .toast-inner.show { display: block; animation: toastIn .25s ease; }
-    @keyframes toastIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+/* ─── TOAST ──────────────────────────────── */
+.toast {
+  position: fixed; bottom: 20px; inset-inline: 16px;
+  display: flex; justify-content: center;
+  pointer-events: none; z-index: 9999;
+}
+.toast-inner {
+  pointer-events: auto;
+  max-width: 500px; width: 100%;
+  background: var(--ink); color: #e2e8f0;
+  border-radius: 14px;
+  padding: 13px 18px;
+  font-weight: 800; font-size: 14px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  display: none;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.toast-inner.show { display: block; animation: toastIn .25s ease; }
+@keyframes toastIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 
-    .print-only { display: none !important; }
+/* ─── PRINT ONLY ─────────────────────────── */
+.print-only { display: none !important; }
 
-    @media print {
-      @page { size: A4; margin: 10mm 12mm; }
-      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      body { background: #fff !important; padding: 0 !important; }
-      .no-print { display: none !important; }
-      .print-only { display: block !important; }
-      .page-header { display: none !important; }
-      .card { box-shadow: none !important; border-radius: 0 !important; max-width: none !important; border: none !important; }
+@media print {
+  @page { size: A4; margin: 10mm 12mm; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #fff !important; padding: 0 !important; }
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .page-header { display: none !important; }
+  .card { box-shadow: none !important; border-radius: 0 !important; max-width: none !important; border: none !important; }
 
-      .print-header {
-        display: flex !important;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 0 0 10px 0;
-        margin: 0 0 10px 0;
-        border-bottom: 3px solid #1e3a8a;
-      }
-      .print-logo {
-        width: 44px; height: 44px;
-        background: #1e3a8a;
-        border-radius: 10px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 18px; color: #fff;
-        flex-shrink: 0;
-      }
-      .print-org { flex: 1; }
-      .print-org h2 { font-size: 13px; font-weight: 900; color: #1e3a8a; margin: 0; }
-      .print-org h3 { font-size: 11px; font-weight: 700; color: #475569; margin: 3px 0 0; }
-      .print-meta-right { text-align: left; font-size: 10px; font-weight: 800; color: #475569; white-space: nowrap; }
-      .print-meta-right div + div { margin-top: 3px; }
+  .print-header {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 0 10px 0;
+    margin: 0 0 10px 0;
+    border-bottom: 3px solid #1e3a8a;
+  }
+  .print-logo {
+    width: 44px; height: 44px;
+    background: #1e3a8a;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: #fff;
+    flex-shrink: 0;
+  }
+  .print-org { flex: 1; }
+  .print-org h2 { font-size: 13px; font-weight: 900; color: #1e3a8a; margin: 0; }
+  .print-org h3 { font-size: 11px; font-weight: 700; color: #475569; margin: 3px 0 0; }
+  .print-meta-right { text-align: left; font-size: 10px; font-weight: 800; color: #475569; white-space: nowrap; }
+  .print-meta-right div + div { margin-top: 3px; }
 
-      .print-meta-row {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 10px;
-        padding: 9px 12px;
-        background: #f8fafc !important;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        margin-bottom: 12px;
-        font-size: 11px; font-weight: 900; color: #1e293b;
-      }
-      .print-meta-row .meta-lbl { font-size: 10px; color: #64748b; font-weight: 700; margin-bottom: 2px; }
-      .print-meta-row .meta-val { font-size: 12px; font-weight: 900; color: #1e3a8a; }
+  .print-meta-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 9px 12px;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 11px; font-weight: 900; color: #1e293b;
+  }
+  .print-meta-row span { display: block; }
+  .print-meta-row .meta-lbl { font-size: 10px; color: #64748b; font-weight: 700; margin-bottom: 2px; }
+  .print-meta-row .meta-val { font-size: 12px; font-weight: 900; color: #1e3a8a; }
 
-      .table-section { padding: 0 !important; }
-      .table-wrap { border: 1.5px solid #e2e8f0 !important; border-radius: 8px !important; overflow: hidden !important; }
-      table { min-width: 0 !important; }
+  .table-section { padding: 0 !important; }
+  .table-wrap { border: 1.5px solid #e2e8f0 !important; border-radius: 8px !important; overflow: hidden !important; }
+  table { min-width: 0 !important; }
 
-      thead th {
-        background: #1e3a8a !important;
-        color: #e2e8f0 !important;
-        padding: 8px 10px !important;
-        font-size: 10px !important; font-weight: 900 !important;
-        border-bottom: 2px solid #1e40af !important;
-      }
+  thead th {
+    background: #1e3a8a !important;
+    color: #e2e8f0 !important;
+    padding: 8px 10px !important;
+    font-size: 10px !important; font-weight: 900 !important;
+    border-bottom: 2px solid #1e40af !important;
+  }
 
-      tbody td {
-        padding: 8px 10px !important;
-        font-size: 10px !important; font-weight: 600 !important;
-        border-bottom: 1px solid #e2e8f0 !important;
-      }
-      tr.sep-row td { background: #f8fafc !important; padding: 4px 10px !important; }
-      tr.row-noted { background: #fffbeb !important; }
+  tbody td {
+    padding: 8px 10px !important;
+    font-size: 10px !important; font-weight: 600 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+  tr.sep-row td { background: #f8fafc !important; padding: 4px 10px !important; }
+  tr.row-noted { background: #fffbeb !important; }
 
-      .statusbar, .fields-section, .actions, .signature-section { display: none !important; }
-      textarea, .note-hint { display: none !important; }
+  .statusbar, .fields-section, .actions, .signature-section { display: none !important; }
+  textarea, .note-hint { display: none !important; }
 
-      .print-note {
-        display: block !important;
-        border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        padding: 5px 8px;
-        font-size: 10px; font-weight: 600;
-        min-height: 22px;
-        white-space: pre-wrap; word-break: break-word;
-        color: #475569;
-      }
-      .print-note.noted {
-        background: #fffbeb !important;
-        border-color: #fcd34d !important;
-        color: #7c2d12 !important; font-weight: 800 !important;
-      }
+  .print-note {
+    display: block !important;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 10px; font-weight: 600;
+    min-height: 22px;
+    white-space: pre-wrap; word-break: break-word;
+    color: #475569;
+  }
+  .print-note.noted {
+    background: #fffbeb !important;
+    border-color: #fcd34d !important;
+    color: #7c2d12 !important; font-weight: 800 !important;
+  }
 
-      .check-lbl, .radio-group, .photo-btn, .photo-preview { display: none !important; }
-      .print-done-text { display: block !important; font-size: 11px !important; font-weight: 900 !important; }
-      .print-done-text.done { color: #047857 !important; }
-      .print-done-text.not-done { color: #94a3b8 !important; }
+  .check-lbl, .radio-group, .photo-btn, .photo-preview { display: none !important; }
+  .print-done-text { display: block !important; font-size: 11px !important; font-weight: 900 !important; }
+  .print-done-text.done { color: #047857 !important; }
+  .print-done-text.not-done { color: #94a3b8 !important; }
 
-      .print-photo {
-        display: block !important;
-        max-width: 100%;
-        height: auto;
-        border-radius: 4px;
-        border: 1px solid #e2e8f0;
-      }
+  .print-photo {
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+  }
 
-      .print-signatures {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-top: 16px;
-        padding-top: 12px;
-        border-top: 1px solid #e2e8f0;
-      }
-      .print-sig-box {
-        border: 1px solid #e2e8f0;
-        border-radius: 6px;
-        padding: 8px;
-      }
-      .print-sig-box h4 {
-        font-size: 10px;
-        font-weight: 800;
-        color: #1e3a8a;
-        margin-bottom: 6px;
-      }
-      .print-sig-box img {
-        width: 100%;
-        height: auto;
-        max-height: 80px;
-        object-fit: contain;
-      }
-      .print-sig-box .no-sig {
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #94a3b8;
-        font-size: 10px;
-        border: 1px dashed #e2e8f0;
-        border-radius: 4px;
-      }
+  .print-signatures {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .print-sig-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px;
+  }
+  .print-sig-box h4 {
+    font-size: 10px;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-bottom: 6px;
+  }
+  .print-sig-box img {
+    width: 100%;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+  }
+  .print-sig-box .no-sig {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 10px;
+    border: 1px dashed #e2e8f0;
+    border-radius: 4px;
+  }
 
-      .print-footer {
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        margin-top: 12px;
-        padding-top: 8px;
-        border-top: 1px solid #e2e8f0;
-        font-size: 10px; color: #64748b; font-weight: 700;
-      }
-    }
+  .print-footer {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 10px; color: #64748b; font-weight: 700;
+  }
+}
+```
+
   </style>
 </head>
-
 <body>
+
   <div class="page-header no-print">
     <div class="logo-badge">🔍</div>
     <div class="page-title-wrap">
@@ -591,6 +603,7 @@ full_corrected = """<!doctype html>
   </div>
 
   <div class="card" id="card">
+    <!-- ── Status Bar ── -->
     <div class="statusbar no-print">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
         <span class="pill warn" id="readyBadge">⚠ يلزم تأكيد جميع البنود</span>
@@ -604,126 +617,138 @@ full_corrected = """<!doctype html>
       </div>
     </div>
 
-    <div class="print-header print-only">
-      <div class="print-logo">🔍</div>
-      <div class="print-org">
-        <h2>دائرة الأمن الصناعي — المركز الرئيس</h2>
-        <h3>نموذج التشييك اليومي على المواقع</h3>
-      </div>
-      <div class="print-meta-right">
-        <div>التاريخ: <strong id="printDate">—</strong></div>
-        <div>الوقت: <strong id="printTime">—</strong></div>
-      </div>
-    </div>
+```
+<!-- ── Print Header ── -->
+<div class="print-header print-only">
+  <div class="print-logo">🔍</div>
+  <div class="print-org">
+    <h2>دائرة الأمن الصناعي — المركز الرئيس</h2>
+    <h3>نموذج التشييك اليومي على المواقع</h3>
+  </div>
+  <div class="print-meta-right">
+    <div>التاريخ: <strong id="printDate">—</strong></div>
+    <div>الوقت: <strong id="printTime">—</strong></div>
+  </div>
+</div>
 
-    <div class="print-meta-row print-only">
-      <div>
-        <div class="meta-lbl">الاسم</div>
-        <div class="meta-val" id="pName">—</div>
-      </div>
-      <div>
-        <div class="meta-lbl">الرقم الوظيفي</div>
-        <div class="meta-val" id="pEmp">—</div>
-      </div>
-      <div>
-        <div class="meta-lbl">الوردية</div>
-        <div class="meta-val" id="pShift">—</div>
-      </div>
-    </div>
+<!-- ── Print Meta Row ── -->
+<div class="print-meta-row print-only">
+  <div>
+    <div class="meta-lbl">الاسم</div>
+    <div class="meta-val" id="pName">—</div>
+  </div>
+  <div>
+    <div class="meta-lbl">الرقم الوظيفي</div>
+    <div class="meta-val" id="pEmp">—</div>
+  </div>
+  <div>
+    <div class="meta-lbl">الوردية</div>
+    <div class="meta-val" id="pShift">—</div>
+  </div>
+</div>
 
-    <div class="fields-section no-print">
-      <div class="fields-grid">
-        <div class="field-group">
-          <label>الرقم الوظيفي</label>
-          <input id="empNo" inputmode="numeric" placeholder="أدخل الرقم" />
-          <div class="field-hint">تعبئة تلقائية عند التعرف</div>
-        </div>
-        <div class="field-group">
-          <label>الاسم</label>
-          <input id="guardName" placeholder="يتم تعبئته تلقائيًا" />
-        </div>
-        <div class="field-group">
-          <label>الوردية</label>
-          <select id="shift">
-            <option value="">اختر</option>
-            <option value="أ">أ</option>
-            <option value="ب">ب</option>
-            <option value="ج">ج</option>
-            <option value="د">د</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <label>التاريخ</label>
-          <input id="date" readonly />
-          <div class="field-hint">تلقائي</div>
-        </div>
-        <div class="field-group">
-          <label>الوقت</label>
-          <input id="time" readonly />
-          <div class="field-hint">تلقائي</div>
-        </div>
-      </div>
+<!-- ── Fields ── -->
+<div class="fields-section no-print">
+  <div class="fields-grid">
+    <div class="field-group">
+      <label>الرقم الوظيفي</label>
+      <input id="empNo" inputmode="numeric" placeholder="أدخل الرقم" />
+      <div class="field-hint">تعبئة تلقائية عند التعرف</div>
     </div>
+    <div class="field-group">
+      <label>الاسم</label>
+      <input id="guardName" placeholder="يتم تعبئته تلقائيًا" />
+    </div>
+    <div class="field-group">
+      <label>الوردية</label>
+      <select id="shift">
+        <option value="">اختر</option>
+        <option value="أ">أ</option>
+        <option value="ب">ب</option>
+        <option value="ج">ج</option>
+        <option value="د">د</option>
+      </select>
+    </div>
+    <div class="field-group">
+      <label>التاريخ</label>
+      <input id="date" readonly />
+      <div class="field-hint">تلقائي</div>
+    </div>
+    <div class="field-group">
+      <label>الوقت</label>
+      <input id="time" readonly />
+      <div class="field-hint">تلقائي</div>
+    </div>
+  </div>
+</div>
 
-    <div class="table-section">
-      <div class="table-title no-print">📋 بنود التفتيش</div>
-      <div class="table-wrap">
-        <table id="sitesTable">
-          <thead>
-            <tr>
-              <th style="text-align:right;">الموقع</th>
-              <th>الأنظمة</th>
-              <th style="width:150px;">الحالة</th>
-              <th>الملاحظات والإجراء المتخذ</th>
-              <th>الصورة</th>
-            </tr>
-          </thead>
-          <tbody id="sitesBody"></tbody>
-        </table>
-      </div>
-    </div>
+<!-- ── Table ── -->
+<div class="table-section">
+  <div class="table-title no-print">📋 بنود التفتيش</div>
+  <div class="table-wrap">
+    <table id="sitesTable">
+      <thead>
+        <tr>
+          <th style="text-align:right;">الموقع</th>
+          <th>الأنظمة</th>
+          <th style="width:150px;">الحالة</th>
+          <th>الملاحظات والإجراء المتخذ</th>
+          <th>الصورة</th>
+        </tr>
+      </thead>
+      <tbody id="sitesBody"></tbody>
+    </table>
+  </div>
+</div>
 
-    <div class="signature-section no-print">
-      <div class="signature-title">📝 التوقيع</div>
-      <div class="signature-wrapper" style="grid-template-columns: 1fr; max-width: 600px;">
-        <div class="signature-box">
-          <div class="signature-header">
-            <span>توقيع ملاحظ النوبة</span>
-            <button class="sig-clear-btn" id="clearInspectorSig" type="button">مسح</button>
-          </div>
-          <div class="signature-canvas-wrap">
-            <canvas class="signature-canvas" id="inspectorCanvas"></canvas>
-            <div class="signature-placeholder" id="inspectorPlaceholder">اضغط أو ارسم للتوقيع</div>
-          </div>
-        </div>
+<!-- ── Signature Section ── -->
+<div class="signature-section no-print">
+  <div class="signature-title">📝 التوقيع</div>
+  <div class="signature-wrapper" style="grid-template-columns: 1fr; max-width: 600px;">
+    <div class="signature-box">
+      <div class="signature-header">
+        <span>توقيع ملاحظ النوبة</span>
+        <button class="sig-clear-btn" id="clearInspectorSig">مسح</button>
+      </div>
+      <div class="signature-canvas-wrap">
+        <canvas class="signature-canvas" id="inspectorCanvas"></canvas>
+        <div class="signature-placeholder" id="inspectorPlaceholder">اضغط أو ارسم للتوقيع</div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="print-signatures print-only" style="grid-template-columns: 1fr; max-width: 400px;">
-      <div class="print-sig-box">
-        <h4>توقيع ملاحظ النوبة</h4>
-        <img id="printInspectorSig" style="display:none;" />
-        <div class="no-sig" id="noInspectorSig">لا يوجد توقيع</div>
-      </div>
-    </div>
+<!-- ── Print Signatures ── -->
+<div class="print-signatures print-only" style="grid-template-columns: 1fr; max-width: 400px;">
+  <div class="print-sig-box">
+    <h4>توقيع ملاحظ النوبة</h4>
+    <img id="printInspectorSig" style="display:none;" />
+    <div class="no-sig" id="noInspectorSig">لا يوجد توقيع</div>
+  </div>
+</div>
 
-    <div class="print-footer print-only">
-      <div>طُبع بواسطة نظام التشييك الإلكتروني</div>
-    </div>
+<!-- ── Print Footer ── -->
+<div class="print-footer print-only">
+  <div>طُبع بواسطة نظام التشييك الإلكتروني</div>
+</div>
 
-    <div class="actions no-print">
-      <div class="actions-left">
-        <button class="btn btn-ghost" id="btnClear" type="button">🗑 مسح النموذج</button>
-      </div>
-      <div class="actions-right">
-        <button class="btn btn-primary" id="btnPrint" type="button" disabled>📄 تصدير PDF</button>
-      </div>
-    </div>
+<!-- ── Actions ── -->
+<div class="actions no-print">
+  <div class="actions-left">
+    <button class="btn btn-ghost" id="btnClear">🗑 مسح النموذج</button>
+  </div>
+  <div class="actions-right">
+    <button class="btn btn-primary" id="btnPrint" disabled>📄 تصدير PDF</button>
+  </div>
+</div>
+```
+
   </div>
 
   <div class="toast"><div class="toast-inner" id="toastBox"></div></div>
 
   <script>
+    /* ─── Data ─── */
     const empDB = {
       "95175":  { name: "سلطان محمد القحطاني",   shift: "أ" },
       "88840":  { name: "محمد حمد القحطاني",     shift: "ب" },
@@ -747,9 +772,19 @@ full_corrected = """<!doctype html>
       { type:"radio", site:"وجود مواد مخزنة بطريقة مخالفة",                     systems:"—", options:["يوجد","لا يوجد"], requireNoteOnYes:true },
     ];
 
+    /* ─── State ─── */
     const $ = id => document.getElementById(id);
-    const state = { checked:{}, radio:{}, notes:{}, photos:{}, signatures:{ inspector:null } };
+    const state = { 
+      checked:{}, 
+      radio:{}, 
+      notes:{},
+      photos: {},
+      signatures: {
+        inspector: null
+      }
+    };
 
+    /* ─── Helpers ─── */
     function toast(msg, dur=2600) {
       const b = $("toastBox");
       b.textContent = msg;
@@ -771,7 +806,9 @@ full_corrected = """<!doctype html>
         .replaceAll('"',"&quot;");
     }
 
-    function countItems() { return sites.filter(r => r.type !== "sep"); }
+    function countItems() {
+      return sites.filter(r => r.type !== "sep");
+    }
 
     function countDone() {
       let n=0;
@@ -783,7 +820,9 @@ full_corrected = """<!doctype html>
       return n;
     }
 
-    function allChecked() { return countDone() === countItems().length; }
+    function allChecked() {
+      return countDone() === countItems().length;
+    }
 
     function validateNotes() {
       for(let i=0;i<sites.length;i++){
@@ -831,6 +870,7 @@ full_corrected = """<!doctype html>
       $("pEmp").textContent   = $("empNo").value || "—";
       $("pShift").textContent = $("shift").value || "—";
 
+      // Update print signature
       if(state.signatures.inspector) {
         $("printInspectorSig").src = state.signatures.inspector;
         $("printInspectorSig").style.display = "block";
@@ -853,35 +893,42 @@ full_corrected = """<!doctype html>
       updatePrintMeta();
     }
 
+    /* ─── Signature Pad ─── */
     function setupSignaturePad(canvasId, placeholderId, signatureKey) {
       const canvas = $(canvasId);
       const placeholder = $(placeholderId);
       const ctx = canvas.getContext('2d');
+      
       let isDrawing = false;
+      let hasDrawn = false;
 
       function resizeCanvas() {
         const rect = canvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-        ctx.setTransform(1,0,0,1,0,0); // مهم: يمنع تكرار scale مع كل resize
-        ctx.scale(dpr, dpr);
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        
         ctx.strokeStyle = '#0d1117';
         ctx.lineWidth = 2;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
       }
+
       resizeCanvas();
       window.addEventListener('resize', resizeCanvas);
 
       function getPos(e) {
         const rect = canvas.getBoundingClientRect();
         const touch = e.touches ? e.touches[0] : e;
-        return { x: touch.clientX - rect.left, y: touch.clientY - rect.top };
+        return {
+          x: touch.clientX - rect.left,
+          y: touch.clientY - rect.top
+        };
       }
 
       function startDrawing(e) {
         isDrawing = true;
+        hasDrawn = true;
         placeholder.classList.add('hidden');
         const pos = getPos(e);
         ctx.beginPath();
@@ -897,10 +944,11 @@ full_corrected = """<!doctype html>
       }
 
       function stopDrawing() {
-        if (!isDrawing) return;
-        isDrawing = false;
-        state.signatures[signatureKey] = canvas.toDataURL();
-        updatePrintMeta();
+        if (isDrawing) {
+          isDrawing = false;
+          state.signatures[signatureKey] = canvas.toDataURL();
+          updatePrintMeta();
+        }
       }
 
       canvas.addEventListener('mousedown', startDrawing);
@@ -908,14 +956,14 @@ full_corrected = """<!doctype html>
       canvas.addEventListener('mouseup', stopDrawing);
       canvas.addEventListener('mouseout', stopDrawing);
 
-      // touch: لازم passive:false عشان preventDefault يشتغل (منع سحب الصفحة أثناء التوقيع)
-      canvas.addEventListener('touchstart', startDrawing, {passive:false});
-      canvas.addEventListener('touchmove', draw, {passive:false});
+      canvas.addEventListener('touchstart', startDrawing);
+      canvas.addEventListener('touchmove', draw);
       canvas.addEventListener('touchend', stopDrawing);
 
       return {
         clear: () => {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
+          hasDrawn = false;
           placeholder.classList.remove('hidden');
           state.signatures[signatureKey] = null;
           updatePrintMeta();
@@ -924,8 +972,13 @@ full_corrected = """<!doctype html>
     }
 
     const inspectorPad = setupSignaturePad('inspectorCanvas', 'inspectorPlaceholder', 'inspector');
-    $("clearInspectorSig").addEventListener('click', () => { inspectorPad.clear(); toast("تم مسح التوقيع"); });
 
+    $("clearInspectorSig").addEventListener('click', () => {
+      inspectorPad.clear();
+      toast("تم مسح التوقيع");
+    });
+
+    /* ─── Render ─── */
     function renderSites() {
       const tb = $("sitesBody");
       tb.innerHTML = "";
@@ -977,174 +1030,178 @@ full_corrected = """<!doctype html>
           <td class="col-done">${doneCell}</td>
           <td class="col-note">
             <textarea class="no-print ${hasNote?"has-note":""} ${missing?"missing":""}" placeholder="لا توجد ملاحظات">${esc(noteText)}</textarea>
-            ${hasNote ? '<div class="note-hint no-print">⚠ يوجد ملاحظة</div>' : ''}
-            <div class="print-note print-only ${hasNote?"noted":""}">${esc(hasNote?noteText:"لا توجد ملاحظات")}</div>
-          </td>
-          <td class="col-photo">
-            <label class="photo-btn no-print ${hasPhoto?"has-photo":""}">
-              <span>${hasPhoto?"✓ صورة":"📷 إضافة"}</span>
-              <input type="file" accept="image/*" data-index="${i}">
-            </label>
-            <div class="photo-preview no-print" id="preview_${i}">
-              <img src="" alt="صورة">
-              <button class="photo-remove" type="button" data-index="${i}">✕ حذف</button>
-            </div>
-            ${hasPhoto ? `<img class="print-photo print-only" src="${hasPhoto}" />` : '<div class="print-only" style="font-size:10px;color:#94a3b8;">—</div>'}
-          </td>
-        `;
-        tb.appendChild(tr);
 
-        if(r.type==="radio"){
-          tr.querySelectorAll('input[type="radio"]').forEach(inp=>{
-            inp.addEventListener("change", ()=>{
-              state.radio[i] = inp.value;
-              renderSites(); setReadyBadge();
-            });
-          });
-        } else {
-          const cb = tr.querySelector('input[type="checkbox"]');
-          cb.addEventListener("change", ()=>{
-            state.checked[i] = cb.checked;
-            renderSites(); setReadyBadge();
-          });
-        }
+```
+        ${hasNote ? '<div class="note-hint no-print">⚠ يوجد ملاحظة</div>' : ''}
+        <div class="print-note print-only ${hasNote?"noted":""}">${esc(hasNote?noteText:"لا توجد ملاحظات")}</div>
+      </td>
+      <td class="col-photo">
+        <label class="photo-btn no-print ${hasPhoto?"has-photo":""}">
+          <span>${hasPhoto?"✓ صورة":"📷 إضافة"}</span>
+          <input type="file" accept="image/*" data-index="${i}">
+        </label>
+        <div class="photo-preview no-print" id="preview_${i}">
+          <img src="" alt="صورة">
+          <button class="photo-remove" data-index="${i}">✕ حذف</button>
+        </div>
+        ${hasPhoto ? `<img class="print-photo print-only" src="${hasPhoto}" />` : '<div class="print-only" style="font-size:10px;color:#94a3b8;">—</div>'}
+      </td>`;
 
-        const ta = tr.querySelector("textarea");
-        ta.addEventListener("input", ()=>{
-          state.notes[i] = ta.value;
-          const noteTextNow = (ta.value || "");
-          const hasNoteNow  = noteTextNow.trim().length > 0;
+    tb.appendChild(tr);
 
-          tr.classList.toggle("row-noted", hasNoteNow);
-          ta.classList.toggle("has-note", hasNoteNow);
-
-          const isYesNow = (r.type === "radio" && state.radio[i] === r.options[0]);
-          const missingNow = (isYesNow && r.requireNoteOnYes && !hasNoteNow);
-          ta.classList.toggle("missing", missingNow);
-
-          const hint = tr.querySelector(".note-hint");
-          if(hasNoteNow){
-            if(!hint){
-              const h = document.createElement("div");
-              h.className = "note-hint no-print";
-              h.textContent = "⚠ يوجد ملاحظة";
-              ta.insertAdjacentElement("afterend", h);
-            }
-          } else {
-            if(hint) hint.remove();
-          }
-
-          const pn = tr.querySelector(".print-note");
-          if(pn){
-            pn.textContent = hasNoteNow ? noteTextNow : "لا توجد ملاحظات";
-            pn.classList.toggle("noted", hasNoteNow);
-          }
+    // Radio events
+    if(r.type==="radio"){
+      tr.querySelectorAll(`input[type="radio"]`).forEach(inp=>{
+        inp.addEventListener("change", ()=>{
+          state.radio[i] = inp.value;
+          renderSites(); setReadyBadge();
         });
-
-        const fileInput = tr.querySelector('input[type="file"]');
-        fileInput.addEventListener('change', (e) => {
-          const file = e.target.files[0];
-          if(file) {
-            const reader = new FileReader();
-            reader.onload = (ev) => {
-              state.photos[i] = ev.target.result;
-              renderSites();
-              toast("تم إضافة الصورة ✓");
-            };
-            reader.readAsDataURL(file);
-          }
-        });
-
-        const removeBtn = tr.querySelector('.photo-remove');
-        if(removeBtn) {
-          removeBtn.addEventListener('click', () => {
-            delete state.photos[i];
-            renderSites();
-            toast("تم حذف الصورة");
-          });
-        }
-
-        if(hasPhoto) {
-          const preview = tr.querySelector(`#preview_${i}`);
-          preview.classList.add('show');
-          preview.querySelector('img').src = hasPhoto;
-        }
       });
-
-      setReadyBadge();
+    } else {
+      // Checkbox events
+      const cb = tr.querySelector(`input[type="checkbox"]`);
+      cb.addEventListener("change", ()=>{
+        state.checked[i] = cb.checked;
+        renderSites(); setReadyBadge();
+      });
     }
 
-    $("empNo").addEventListener("input", e=>{
-      const v = normalizeNum(e.target.value);
-      e.target.value = v;
-      if(!v){
-        setEmpBadge("neutral","—");
-        $("guardName").value = "";
-        $("shift").value = "";
-        updatePrintMeta();
-        return;
-      }
-      if(empDB[v]){
-        $("guardName").value = empDB[v].name;
-        $("shift").value     = empDB[v].shift;
-        setEmpBadge("good","✅ تم التعرف على الموظف");
-        toast(`مرحبًا، ${empDB[v].name} 👋`);
-      } else {
-        setEmpBadge("warn","ℹ️ الرقم غير موجود");
-      }
-      updatePrintMeta();
-    });
+    // Textarea events
+    const ta = tr.querySelector("textarea");
+    ta.addEventListener("input", ()=>{
+      state.notes[i] = ta.value;
+      const noteTextNow = (ta.value || "");
+      const hasNoteNow  = noteTextNow.trim().length > 0;
 
-    $("guardName").addEventListener("input", updatePrintMeta);
-    $("shift").addEventListener("change", updatePrintMeta);
+      tr.classList.toggle("row-noted", hasNoteNow);
+      ta.classList.toggle("has-note", hasNoteNow);
 
-    $("btnPrint").addEventListener("click", ()=>{
-      if(!allChecked()){ toast("أكمل تأكيد جميع البنود أولاً"); return; }
-      const v = validateNotes();
-      if(!v.valid){
-        toast("عند اختيار (يوجد) يجب كتابة ملاحظة");
-        const target = sites[v.index].site;
-        const rows = $("sitesBody").querySelectorAll("tr");
-        for(const row of rows){
-          if(row.textContent.includes(target)){
-            row.scrollIntoView({behavior:"smooth",block:"center"}); break;
-          }
+      const isYesNow = (r.type === "radio" && state.radio[i] === r.options[0]);
+      const missingNow = (isYesNow && r.requireNoteOnYes && !hasNoteNow);
+      ta.classList.toggle("missing", missingNow);
+
+      const hint = tr.querySelector(".note-hint");
+      if(hasNoteNow){
+        if(!hint){
+          const h = document.createElement("div");
+          h.className = "note-hint no-print";
+          h.textContent = "⚠ يوجد ملاحظة";
+          ta.insertAdjacentElement("afterend", h);
         }
-        return;
+      } else {
+        if(hint) hint.remove();
       }
-      updatePrintMeta();
-      window.print();
+
+      const pn = tr.querySelector(".print-note");
+      if(pn){
+        pn.textContent = hasNoteNow ? noteTextNow : "لا توجد ملاحظات";
+        pn.classList.toggle("noted", hasNoteNow);
+      }
     });
 
-    $("btnClear").addEventListener("click", ()=>{
-      if(!confirm("هل تريد مسح جميع البيانات والتوقيع والصور؟")) return;
-      $("empNo").value = "";
-      $("guardName").value = "";
-      $("shift").value = "";
-      state.checked = {};
-      state.radio   = {};
-      state.notes   = {};
-      state.photos  = {};
-      inspectorPad.clear();
-      setEmpBadge("neutral","—");
-      renderSites(); updatePrintMeta();
-      toast("تم مسح النموذج");
+    // Photo upload events
+    const fileInput = tr.querySelector('input[type="file"]');
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if(file) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          state.photos[i] = ev.target.result;
+          renderSites();
+          toast("تم إضافة الصورة ✓");
+        };
+        reader.readAsDataURL(file);
+      }
     });
 
-    updateDateTime();
-    setInterval(updateDateTime, 30000);
-    renderSites();
-    updatePrintMeta();
+    // Photo remove events
+    const removeBtn = tr.querySelector('.photo-remove');
+    if(removeBtn) {
+      removeBtn.addEventListener('click', () => {
+        delete state.photos[i];
+        renderSites();
+        toast("تم حذف الصورة");
+      });
+    }
+
+    // Show preview if photo exists
+    if(hasPhoto) {
+      const preview = tr.querySelector(`#preview_${i}`);
+      preview.classList.add('show');
+      preview.querySelector('img').src = hasPhoto;
+    }
+  });
+
+  setReadyBadge();
+}
+
+/* ─── Events ─── */
+$("empNo").addEventListener("input", e=>{
+  const v = normalizeNum(e.target.value);
+  e.target.value = v;
+  if(!v){
     setEmpBadge("neutral","—");
+    $("guardName").value = "";
+    $("shift").value = "";
+    updatePrintMeta();
+    return;
+  }
+  if(empDB[v]){
+    $("guardName").value = empDB[v].name;
+    $("shift").value     = empDB[v].shift;
+    setEmpBadge("good","✅ تم التعرف على الموظف");
+    toast(`مرحبًا، ${empDB[v].name} 👋`);
+  } else {
+    setEmpBadge("warn","ℹ️ الرقم غير موجود");
+  }
+  updatePrintMeta();
+});
+
+$("guardName").addEventListener("input", updatePrintMeta);
+$("shift").addEventListener("change", updatePrintMeta);
+
+$("btnPrint").addEventListener("click", ()=>{
+  if(!allChecked()){ toast("أكمل تأكيد جميع البنود أولاً"); return; }
+  const v = validateNotes();
+  if(!v.valid){
+    toast("عند اختيار (يوجد) يجب كتابة ملاحظة");
+    const rows = $("sitesBody").querySelectorAll("tr");
+    const target = sites[v.index].site;
+    for(const row of rows){
+      if(row.textContent.includes(target)){
+        row.scrollIntoView({behavior:"smooth",block:"center"}); break;
+      }
+    }
+    return;
+  }
+  updatePrintMeta();
+  window.print();
+});
+
+$("btnClear").addEventListener("click", ()=>{
+  if(!confirm("هل تريد مسح جميع البيانات والتوقيع والصور؟")) return;
+  $("empNo").value = "";
+  $("guardName").value = "";
+  $("shift").value = "";
+  state.checked = {};
+  state.radio   = {};
+  state.notes   = {};
+  state.photos  = {};
+  inspectorPad.clear();
+  setEmpBadge("neutral","—");
+  renderSites(); updatePrintMeta();
+  toast("تم مسح النموذج");
+});
+
+/* ─── Init ─── */
+updateDateTime();
+setInterval(updateDateTime, 30000);
+renderSites();
+updatePrintMeta();
+setEmpBadge("neutral","—");
+```
+
   </script>
+
 </body>
 </html>
-"""
-
-if needs_replace:
-    fixed_html = full_corrected
-
-# Always overwrite with full corrected (ensures no stray fences & JS template issues)
-Path("/mnt/data/نموذج_التشييك_اليومي_على_المواقع.html").write_text(full_corrected, encoding="utf-8")
-
-"/mnt/data/نموذج_التشييك_اليومي_على_المواقع.html"
